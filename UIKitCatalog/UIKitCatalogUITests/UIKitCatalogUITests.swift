@@ -54,7 +54,42 @@ final class UIKitCatalogUITests: XCTestCase {
         
         app.terminate()
     }
+    
+    func testExample4() throws {   //lesson 20
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Search"].tap()
+        app.staticTexts["Default"].tap()
+        sleep(5)
+        
+        app.searchFields.element.tap()
+        app.searchFields.element.typeText("Sobaka")
+        
+        app.terminate()
+    }
+    
+    
+    func testExample5() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        
+        app.textFields.element(boundBy: 1).tap()
+        app.textFields.element(boundBy: 1).typeText("Hello")
+        
+        
+    }
+    
+    
+    func testExample6() throws {  //lesston21
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Date Picker"].tap()
+        app.buttons["Date and Time Picker"].tap()
+        app.buttons["Thursday, February 6"].tap()
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1)).tap()
+        app.buttons.allElementsBoundByIndex.last?.tap()
+        app.pickerWheels["PM"].adjust(toPickerWheelValue: "AM")
+    }
 }
-
-
-
