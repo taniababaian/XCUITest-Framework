@@ -55,7 +55,7 @@ final class UIKitCatalogUITests: XCTestCase {
         app.terminate()
     }
     
-    func testExample4() throws {   //lesson 20
+    func testExample4() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -73,8 +73,8 @@ final class UIKitCatalogUITests: XCTestCase {
     func testExample5() throws {
         let app = XCUIApplication()
         app.launch()
-        app.staticTexts["Text Fields"].tap()
         
+        app.staticTexts["Text Fields"].tap()
         app.textFields.element(boundBy: 1).tap()
         app.textFields.element(boundBy: 1).typeText("Hello")
         
@@ -82,9 +82,10 @@ final class UIKitCatalogUITests: XCTestCase {
     }
     
     
-    func testExample6() throws {  //lesston21
+    func testExample6() throws {
         let app = XCUIApplication()
         app.launch()
+        
         app.staticTexts["Date Picker"].tap()
         app.buttons["Date and Time Picker"].tap()
         app.buttons["Thursday, February 6"].tap()
@@ -92,4 +93,63 @@ final class UIKitCatalogUITests: XCTestCase {
         app.buttons.allElementsBoundByIndex.last?.tap()
         app.pickerWheels["PM"].adjust(toPickerWheelValue: "AM")
     }
+    
+    
+    func testExample7() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Picker View"].tap()
+        app.pickerWheels["Red color component value"].adjust(toPickerWheelValue: "120")
+        app.pickerWheels["Green color component value"].adjust(toPickerWheelValue: "255")
+        app.pickerWheels["Blue color component value"].adjust(toPickerWheelValue: "120")
+        
+    }
+    
+    
+    func testExample8() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Sliders"].tap()
+        app.sliders.element(boundBy: 1).adjust(toNormalizedSliderPosition: 0.9)
+        
+    }
+    
+    func testExample9() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Switches"].tap()
+        app.switches["1"].firstMatch.tap()
+        
+        
+    }
+    
+    func testSwitchStatus() throws {   //lesson 25
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Switches"].tap()
+        
+        let switchValue = app.switches["1"].firstMatch.value
+        let intSwitchValue = (switchValue as! NSString).integerValue
+        print(intSwitchValue)
+        
+        if(intSwitchValue == 1){
+          print("already selected")
+        }else{
+            app.switches["1"].firstMatch.tap()
+            app.switches.element(boundBy: 1).tap()
+            print("sucessfully selected")
+        }
+    }
 }
+
+
+
+
+
+
+
+
