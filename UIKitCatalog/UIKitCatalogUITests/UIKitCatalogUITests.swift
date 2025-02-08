@@ -170,4 +170,20 @@ final class UIKitCatalogUITests: XCTestCase {
         app.menuItems["Select All"].tap()
         app.keys["delete"].tap()
     }
+    
+    
+    func testExample12() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        app.textFields.element(boundBy: 1).tap()
+        
+        app.keys["numbers"].tap()
+        app.keys["1"].tap()
+        app.keys["2"].tap()
+        app.keys["3"].tap()
+        app.keys["4"].tap()
+        app.keys["5"].tap()
+        
+    }
 }
