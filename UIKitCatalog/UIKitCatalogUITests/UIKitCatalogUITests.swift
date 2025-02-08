@@ -126,7 +126,7 @@ final class UIKitCatalogUITests: XCTestCase {
         
     }
     
-    func testSwitchStatus() throws {   //lesson 25
+    func testSwitchStatus() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -137,19 +137,53 @@ final class UIKitCatalogUITests: XCTestCase {
         print(intSwitchValue)
         
         if(intSwitchValue == 1){
-          print("already selected")
+            print("already selected")
         }else{
             app.switches["1"].firstMatch.tap()
             app.switches.element(boundBy: 1).tap()
             print("sucessfully selected")
         }
     }
+    
+    func testExample10() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        app.textFields.element(boundBy: 1).tap()
+        app.textFields.element(boundBy: 1).typeText("demo user")
+        
+        
+        app.textFields.element(boundBy: 1).press(forDuration: 1.2)
+        app.menuItems["Select All"].tap()
+        app.keys["delete"].press(forDuration: 2)
+        
+    }
+    
+    func testExample11() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.staticTexts["Text Fields"].tap()
+        app.textFields.element(boundBy: 1).tap()
+        app.textFields.element(boundBy: 1).typeText("demo user")
+        app.textFields.element(boundBy: 1).press(forDuration: 1.2)
+        app.menuItems["Select All"].tap()
+        app.keys["delete"].tap()
+    }
+    
+    
+    func testExample12() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        app.textFields.element(boundBy: 1).tap()
+        
+        app.keys["numbers"].tap()
+        app.keys["1"].tap()
+        app.keys["2"].tap()
+        app.keys["3"].tap()
+        app.keys["4"].tap()
+        app.keys["5"].tap()
+        
+    }
 }
-
-
-
-
-
-
-
-
