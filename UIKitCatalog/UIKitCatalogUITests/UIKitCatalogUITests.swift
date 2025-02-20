@@ -186,4 +186,58 @@ final class UIKitCatalogUITests: XCTestCase {
         app.keys["5"].tap()
         
     }
+    
+    func testExample13() throws {    // lesson 31 32
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        app.textFields.element(boundBy: 0).tap()
+        app.textFields.element(boundBy: 0).typeText("Hello")
+        
+        _ = app.textFields.count
+        for i in 0...4 {
+            let data = app.textFields.element(boundBy: i).value
+            if data as! String == "Hello" {
+                print("content matched terminating the loop")
+                break
+            }
+        }
+    }
+    
+    
+    func testExample14() throws {    // lesson 33
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Text Fields"].tap()
+        let shot = app.screenshot()
+        let attachment = XCTAttachment(screenshot: shot)
+        attachment.name = "demo screenshot"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        
+        print("execution completed")
+        
+    }
+    
+    func testExample15() throws {    // lesson 34
+        let app = XCUIApplication()
+        app.launch()
+        app.swipeUp()
+        sleep(3)
+        app.swipeDown()
+        sleep(3)
+        app.swipeLeft()
+        sleep(3)
+        app.swipeRight()
+    }
+    
+    func testExample16() throws {    // lesson 35
+        let app = XCUIApplication()
+        app.launch()
+        app.staticTexts["Page Control"].tap()
+        app.pageIndicators.element(boundBy: 0).swipeRight()
+        sleep(3)
+        app.pageIndicators.element(boundBy: 0).swipeLeft()
+        
+    }
 }
